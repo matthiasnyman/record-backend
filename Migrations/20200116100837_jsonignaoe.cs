@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace record_backend.Migrations
 {
-    public partial class getOne : Migration
+    public partial class jsonignaoe : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,7 +13,7 @@ namespace record_backend.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
                     Recomend = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
@@ -54,7 +55,7 @@ namespace record_backend.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductGenres",
+                name: "ProductsInGenre",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -64,15 +65,15 @@ namespace record_backend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductGenres", x => x.Id);
+                    table.PrimaryKey("PK_ProductsInGenre", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ProductGenres_Genres_GenreId",
+                        name: "FK_ProductsInGenre_Genres_GenreId",
                         column: x => x.GenreId,
                         principalTable: "Genres",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProductGenres_Records_RecordId",
+                        name: "FK_ProductsInGenre_Records_RecordId",
                         column: x => x.RecordId,
                         principalTable: "Records",
                         principalColumn: "Id",
@@ -111,6 +112,7 @@ namespace record_backend.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    Created = table.Column<DateTime>(nullable: false),
                     CartId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -123,6 +125,21 @@ namespace record_backend.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Genres",
+                columns: new[] { "Id", "Name", "Recomend" },
+                values: new object[] { 1, "Pop", false });
+
+            migrationBuilder.InsertData(
+                table: "Genres",
+                columns: new[] { "Id", "Name", "Recomend" },
+                values: new object[] { 2, "Rock", false });
+
+            migrationBuilder.InsertData(
+                table: "Genres",
+                columns: new[] { "Id", "Name", "Recomend" },
+                values: new object[] { 3, "Blues", false });
 
             migrationBuilder.InsertData(
                 table: "Records",
@@ -164,6 +181,31 @@ namespace record_backend.Migrations
                 columns: new[] { "Id", "Email", "FirstName", "LastName" },
                 values: new object[] { 8, "Kalle@attd.se", "Kalle", "Nyman" });
 
+            migrationBuilder.InsertData(
+                table: "ProductsInGenre",
+                columns: new[] { "Id", "GenreId", "RecordId" },
+                values: new object[] { 1, 2, 1 });
+
+            migrationBuilder.InsertData(
+                table: "ProductsInGenre",
+                columns: new[] { "Id", "GenreId", "RecordId" },
+                values: new object[] { 2, 1, 2 });
+
+            migrationBuilder.InsertData(
+                table: "ProductsInGenre",
+                columns: new[] { "Id", "GenreId", "RecordId" },
+                values: new object[] { 3, 1, 3 });
+
+            migrationBuilder.InsertData(
+                table: "ProductsInGenre",
+                columns: new[] { "Id", "GenreId", "RecordId" },
+                values: new object[] { 4, 1, 4 });
+
+            migrationBuilder.InsertData(
+                table: "ProductsInGenre",
+                columns: new[] { "Id", "GenreId", "RecordId" },
+                values: new object[] { 5, 3, 4 });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Carts_RecordId",
                 table: "Carts",
@@ -180,13 +222,13 @@ namespace record_backend.Migrations
                 column: "CartId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductGenres_GenreId",
-                table: "ProductGenres",
+                name: "IX_ProductsInGenre_GenreId",
+                table: "ProductsInGenre",
                 column: "GenreId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductGenres_RecordId",
-                table: "ProductGenres",
+                name: "IX_ProductsInGenre_RecordId",
+                table: "ProductsInGenre",
                 column: "RecordId");
         }
 
@@ -196,7 +238,7 @@ namespace record_backend.Migrations
                 name: "Orders");
 
             migrationBuilder.DropTable(
-                name: "ProductGenres");
+                name: "ProductsInGenre");
 
             migrationBuilder.DropTable(
                 name: "Carts");

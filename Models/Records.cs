@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -15,5 +16,6 @@ namespace record_backend.Models
     public decimal Price {get; set;}
     public decimal Sale {get; set;}
     public string Info {get; set;}
+    public IEnumerable<ProductsInGenre> ProductsInGenre {get; set;}
   }
 }

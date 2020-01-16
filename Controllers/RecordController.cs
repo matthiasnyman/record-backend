@@ -27,8 +27,7 @@ namespace record_backend.Controllers
     {
       using (RecordStoreContexts context = new RecordStoreContexts())
       {
-        return context.Records.ToList();
-
+        return context.Records.Include(b => b.ProductsInGenre).ToList();
       }
     }
 
@@ -37,6 +36,7 @@ namespace record_backend.Controllers
     {
       using (RecordStoreContexts context = new RecordStoreContexts())
       {
+        context.Records.Include(b => b.ProductsInGenre);
         return context.Records.First(b => b.Id == id);
       }
     }

@@ -9,7 +9,7 @@ namespace EntityFrameworkUppgift.contexts
     public DbSet<Record> Records { get; set; } //Tabellen Record
     public DbSet<Order> Orders { get; set; } //Tabellen Order
     public DbSet<Cart> Carts { get; set; } //Tabellen Cart 
-    public DbSet<ProductGenre> ProductGenres { get; set; } //Tabellen 
+    public DbSet<ProductsInGenre> ProductsInGenre { get; set; } //Tabellen 
     public DbSet<Genre> Genres { get; set; } //Tabellen
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
@@ -86,6 +86,43 @@ namespace EntityFrameworkUppgift.contexts
         FirstName = "Kalle",
         LastName = "Nyman",
         Email = "Kalle@attd.se",
+      });
+      ModelBuilder.Entity<Genre>().HasData(new Genre{ 
+        Id = 1,
+        Name = "Pop",
+      });
+      ModelBuilder.Entity<Genre>().HasData(new Genre{ 
+        Id = 2,
+        Name = "Rock",
+      });
+      ModelBuilder.Entity<Genre>().HasData(new Genre{ 
+        Id = 3,
+        Name = "Blues",
+      });
+      ModelBuilder.Entity<ProductsInGenre>().HasData(new ProductsInGenre{ 
+        Id = 1,
+        RecordId = 1,
+        GenreId = 2
+      });
+      ModelBuilder.Entity<ProductsInGenre>().HasData(new ProductsInGenre{ 
+        Id = 2,
+        RecordId = 2,
+        GenreId = 1
+      });
+      ModelBuilder.Entity<ProductsInGenre>().HasData(new ProductsInGenre{ 
+        Id = 3,
+        RecordId = 3,
+        GenreId = 1
+      });
+      ModelBuilder.Entity<ProductsInGenre>().HasData(new ProductsInGenre{ 
+        Id = 4,
+        RecordId = 4,
+        GenreId = 1
+      });
+      ModelBuilder.Entity<ProductsInGenre>().HasData(new ProductsInGenre{ 
+        Id = 5,
+        RecordId = 4,
+        GenreId = 3
       });
 
     }

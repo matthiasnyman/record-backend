@@ -3,14 +3,16 @@ using System;
 using EntityFrameworkUppgift.contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace record_backend.Migrations
 {
     [DbContext(typeof(RecordStoreContexts))]
-    partial class RecordStoreContextsModelSnapshot : ModelSnapshot
+    [Migration("20200117101516_addedLinks")]
+    partial class addedLinks
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -192,7 +194,7 @@ namespace record_backend.Migrations
                             Id = 2,
                             Album = "Röd",
                             Artist = "Kent",
-                            Image = "https://www.bengans.se/bilder/artiklar/liten/1689651_S.jpg",
+                            Image = "'https://www.bengans.se/bilder/artiklar/liten/1689651_S.jpg",
                             Info = "Skivan är fantastisk!",
                             Price = 200.00m,
                             Sale = 0m
@@ -202,7 +204,7 @@ namespace record_backend.Migrations
                             Id = 3,
                             Album = "2 steg från paridise",
                             Artist = "Håkan Hellström",
-                            Image = "https://www.bengans.se/bilder/artiklar/liten/619835_S.jpg",
+                            Image = "'https://www.bengans.se/bilder/artiklar/liten/619835_S.jpg",
                             Info = "Håkan bråkan!",
                             Price = 130.00m,
                             Sale = 0m

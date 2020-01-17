@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace record_backend.Migrations
 {
     [DbContext(typeof(RecordStoreContexts))]
-    [Migration("20200116100837_jsonignaoe")]
-    partial class jsonignaoe
+    [Migration("20200117102118_addedLinks2")]
+    partial class addedLinks2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -182,9 +182,9 @@ namespace record_backend.Migrations
                         new
                         {
                             Id = 1,
-                            Album = "Greatest hits",
+                            Album = "ABBA the album",
                             Artist = "ABBA",
-                            Image = "/image1",
+                            Image = "https://www.bengans.se/bilder/artiklar/liten/2572243_S.jpg",
                             Info = "Skivan är ok..",
                             Price = 120.00m,
                             Sale = 0m
@@ -194,7 +194,7 @@ namespace record_backend.Migrations
                             Id = 2,
                             Album = "Röd",
                             Artist = "Kent",
-                            Image = "'/image2",
+                            Image = "https://www.bengans.se/bilder/artiklar/liten/1689651_S.jpg",
                             Info = "Skivan är fantastisk!",
                             Price = 200.00m,
                             Sale = 0m
@@ -204,7 +204,7 @@ namespace record_backend.Migrations
                             Id = 3,
                             Album = "2 steg från paridise",
                             Artist = "Håkan Hellström",
-                            Image = "'/image2",
+                            Image = "https://www.bengans.se/bilder/artiklar/liten/619835_S.jpg",
                             Info = "Håkan bråkan!",
                             Price = 130.00m,
                             Sale = 0m
@@ -212,9 +212,9 @@ namespace record_backend.Migrations
                         new
                         {
                             Id = 4,
-                            Album = "The roumers",
+                            Album = "Boston vol:2",
                             Artist = "Fleetwood mac",
-                            Image = "'/image2",
+                            Image = "https://www.bengans.se/bilder/artiklar/liten/3601538_S.jpg",
                             Info = "Simon gillat!",
                             Price = 200.00m,
                             Sale = 0m
@@ -224,7 +224,7 @@ namespace record_backend.Migrations
                             Id = 5,
                             Album = "Bourn in the USA",
                             Artist = "Bruse Springstin",
-                            Image = "'/image7",
+                            Image = "https://www.bengans.se/bilder/artiklar/liten/1533609_S.jpg",
                             Info = "brusse!",
                             Price = 20.00m,
                             Sale = 0m
@@ -232,9 +232,9 @@ namespace record_backend.Migrations
                         new
                         {
                             Id = 6,
-                            Album = "Dynasti",
+                            Album = "Hot in the shade",
                             Artist = "Kiss",
-                            Image = "'/image7",
+                            Image = "https://www.bengans.se/bilder/artiklar/liten/3496044_S.jpg",
                             Info = "brusse!",
                             Price = 2000.00m,
                             Sale = 0m

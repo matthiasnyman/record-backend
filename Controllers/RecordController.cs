@@ -23,11 +23,35 @@ namespace record_backend.Controllers
     }
 
     [HttpGet]
-    public IEnumerable<Record> Get()
+    public IEnumerable<RecordViewModel> Get()
     {
+      List<RecordViewModel> viewModels = new List<RecordViewModel>();
+
       using (RecordStoreContexts context = new RecordStoreContexts())
       {
-        return context.Records.Include(b => b.ProductsInGenre).ToList();
+        List<Record> rs = context.Records.Include(record => record.ProductsInGenre).ToList();
+
+        foreach(var r in rs) {
+
+          RecordViewModel viewModel = new RecordViewModel();
+          viewModel.Record = r;
+
+          List<ProductsInGenre> pigs = context.ProductsInGenre
+            .Where(pig => pig.RecordId == r.Id)
+            .ToList();
+
+          List<Genre> genres = new List<Genre>();
+          foreach(var g in pigs){
+            Genre genre = context.Genres.FirstOrDefault(genre => genre.Id == g.GenreId);
+            genres.Add(genre);
+          }
+
+          viewModel.Genres = genres;
+
+          viewModels.Add(viewModel);
+        }
+
+        return viewModels;
       }
     }
 
@@ -36,7 +60,6 @@ namespace record_backend.Controllers
     {
       using (RecordStoreContexts context = new RecordStoreContexts())
       {
-        context.Records.Include(b => b.ProductsInGenre);
         return context.Records.First(b => b.Id == id);
       }
     }

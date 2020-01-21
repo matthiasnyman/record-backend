@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace record_backend.Models
 {
@@ -16,6 +17,8 @@ namespace record_backend.Models
     public decimal Price {get; set;}
     public decimal Sale {get; set;}
     public string Info {get; set;}
-    public IEnumerable<ProductsInGenre> ProductsInGenre {get; set;}
+    
+    [JsonIgnore]
+    public ICollection<ProductsInGenre> ProductsInGenre {get; set;}
   }
 }

@@ -9,7 +9,6 @@ namespace record_backend.Models
     public int RecordId {get; set;}
     [JsonIgnore]
     public Genre Genre {get; set;}
-    [JsonIgnore]
     public Record Record {get; set;}
   }
 }

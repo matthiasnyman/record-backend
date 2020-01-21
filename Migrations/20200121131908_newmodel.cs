@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace record_backend.Migrations
 {
-    public partial class addedLinks : Migration
+    public partial class newmodel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,8 +13,7 @@ namespace record_backend.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(nullable: true),
-                    Recomend = table.Column<bool>(nullable: false)
+                    Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -128,18 +127,33 @@ namespace record_backend.Migrations
 
             migrationBuilder.InsertData(
                 table: "Genres",
-                columns: new[] { "Id", "Name", "Recomend" },
-                values: new object[] { 1, "Pop", false });
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 1, "Pop" });
 
             migrationBuilder.InsertData(
                 table: "Genres",
-                columns: new[] { "Id", "Name", "Recomend" },
-                values: new object[] { 2, "Rock", false });
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 2, "Rock" });
 
             migrationBuilder.InsertData(
                 table: "Genres",
-                columns: new[] { "Id", "Name", "Recomend" },
-                values: new object[] { 3, "Blues", false });
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 3, "Blues" });
+
+            migrationBuilder.InsertData(
+                table: "Genres",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 4, "Hiphop" });
+
+            migrationBuilder.InsertData(
+                table: "Genres",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 5, "Raggae" });
+
+            migrationBuilder.InsertData(
+                table: "Genres",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 6, "Punk" });
 
             migrationBuilder.InsertData(
                 table: "Records",
@@ -149,12 +163,12 @@ namespace record_backend.Migrations
             migrationBuilder.InsertData(
                 table: "Records",
                 columns: new[] { "Id", "Album", "Artist", "Image", "Info", "Price", "Sale" },
-                values: new object[] { 2, "Röd", "Kent", "'https://www.bengans.se/bilder/artiklar/liten/1689651_S.jpg", "Skivan är fantastisk!", 200.00m, 0m });
+                values: new object[] { 2, "Röd", "Kent", "https://www.bengans.se/bilder/artiklar/liten/1689651_S.jpg", "Skivan är fantastisk!", 200.00m, 0m });
 
             migrationBuilder.InsertData(
                 table: "Records",
                 columns: new[] { "Id", "Album", "Artist", "Image", "Info", "Price", "Sale" },
-                values: new object[] { 3, "2 steg från paridise", "Håkan Hellström", "'https://www.bengans.se/bilder/artiklar/liten/619835_S.jpg", "Håkan bråkan!", 130.00m, 0m });
+                values: new object[] { 3, "2 steg från paridise", "Håkan Hellström", "https://www.bengans.se/bilder/artiklar/liten/619835_S.jpg", "Håkan bråkan!", 130.00m, 0m });
 
             migrationBuilder.InsertData(
                 table: "Records",

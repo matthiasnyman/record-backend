@@ -99,6 +99,18 @@ namespace EntityFrameworkUppgift.contexts
         Id = 3,
         Name = "Blues",
       });
+      ModelBuilder.Entity<Genre>().HasData(new Genre{ 
+        Id = 4,
+        Name = "Hiphop",
+      });
+      ModelBuilder.Entity<Genre>().HasData(new Genre{ 
+        Id = 5,
+        Name = "Raggae",
+      });
+      ModelBuilder.Entity<Genre>().HasData(new Genre{ 
+        Id = 6,
+        Name = "Punk",
+      });
       ModelBuilder.Entity<ProductsInGenre>().HasData(new ProductsInGenre{ 
         Id = 1,
         RecordId = 1,

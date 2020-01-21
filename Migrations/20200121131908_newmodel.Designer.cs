@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace record_backend.Migrations
 {
     [DbContext(typeof(RecordStoreContexts))]
-    [Migration("20200117102118_addedLinks2")]
-    partial class addedLinks2
+    [Migration("20200121131908_newmodel")]
+    partial class newmodel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,9 +48,6 @@ namespace record_backend.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("Recomend")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
 
                     b.ToTable("Genres");
@@ -59,20 +56,32 @@ namespace record_backend.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Pop",
-                            Recomend = false
+                            Name = "Pop"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Rock",
-                            Recomend = false
+                            Name = "Rock"
                         },
                         new
                         {
                             Id = 3,
-                            Name = "Blues",
-                            Recomend = false
+                            Name = "Blues"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Hiphop"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Raggae"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Punk"
                         });
                 });
 
@@ -304,7 +313,7 @@ namespace record_backend.Migrations
             modelBuilder.Entity("record_backend.Models.ProductsInGenre", b =>
                 {
                     b.HasOne("record_backend.Models.Genre", "Genre")
-                        .WithMany()
+                        .WithMany("ProductsInGenre")
                         .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

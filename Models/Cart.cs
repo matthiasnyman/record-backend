@@ -5,10 +5,9 @@ namespace record_backend.Models
 {
   public class Cart {
     public int Id {get; set;}
-    public int UserId {get; set;}
     public int RecordId {get; set;}
-
-    public User User {get; set;}
+    public int OrderId {get; set;}
     public Record Record {get; set;}
+    public Order Order {get; set;}
   }
 }

@@ -15,6 +15,8 @@ namespace EntityFrameworkUppgift.contexts
     protected override void OnConfiguring(DbContextOptionsBuilder options)
       => options.UseSqlite("Data Source=recorddb.db");
 
+
+    // Only Data under this line.... 
     protected override void OnModelCreating(ModelBuilder ModelBuilder) {
 
       ModelBuilder.Entity<Record>().HasData(new Record{ 
@@ -112,30 +114,27 @@ namespace EntityFrameworkUppgift.contexts
         Name = "Punk",
       });
       ModelBuilder.Entity<ProductsInGenre>().HasData(new ProductsInGenre{ 
-        Id = 1,
         RecordId = 1,
         GenreId = 2
       });
       ModelBuilder.Entity<ProductsInGenre>().HasData(new ProductsInGenre{ 
-        Id = 2,
         RecordId = 2,
         GenreId = 1
       });
       ModelBuilder.Entity<ProductsInGenre>().HasData(new ProductsInGenre{ 
-        Id = 3,
         RecordId = 3,
         GenreId = 1
       });
       ModelBuilder.Entity<ProductsInGenre>().HasData(new ProductsInGenre{ 
-        Id = 4,
         RecordId = 4,
         GenreId = 1
       });
       ModelBuilder.Entity<ProductsInGenre>().HasData(new ProductsInGenre{ 
-        Id = 5,
         RecordId = 4,
         GenreId = 3
       });
+
+
 
     }
 

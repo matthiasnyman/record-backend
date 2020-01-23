@@ -22,18 +22,7 @@ namespace record_backend.Controllers
       _logger = logger;
     }
 
-    // [HttpGet]
-    // public IEnumerable<Genre> Get()
-    // {
-    //   using (RecordStoreContexts context = new RecordStoreContexts())
-    //   {
-    //     return context.Genres
-    //       .Include(genre => genre.ProductsInGenre)
-    //       .ThenInclude(pig => pig.Record)
-    //       .ToList();
-    //   }
-    // }
-
+    
     [HttpGet("{id}")]
     public ActionResult<Genre> Get(int id)
     {

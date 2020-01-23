@@ -46,7 +46,11 @@ namespace record_backend.Controllers
     {
       using (RecordStoreContexts context = new RecordStoreContexts())
       {
-        context.Orders.Add(newOrder);
+        Order o = new Order();
+        o.Created = DateTime.Now;
+        o.Created = DateTime.Now;
+        o.UserId = newOrder.UserId;
+        context.Orders.Add(o);
         context.SaveChanges();
       }
       return Created("/Order", newOrder);

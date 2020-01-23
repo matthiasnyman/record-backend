@@ -22,17 +22,17 @@ namespace record_backend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("RecordId")
+                    b.Property<int>("OrderId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("UserId")
+                    b.Property<int>("RecordId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RecordId");
+                    b.HasIndex("OrderId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("RecordId");
 
                     b.ToTable("Carts");
                 });
@@ -89,15 +89,13 @@ namespace record_backend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CartId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<DateTime>("Created")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
 
-                    b.HasIndex("CartId");
+                    b.HasKey("Id");
 
                     b.ToTable("Orders");
                 });
@@ -286,24 +284,15 @@ namespace record_backend.Migrations
 
             modelBuilder.Entity("record_backend.Models.Cart", b =>
                 {
+                    b.HasOne("record_backend.Models.Order", "Order")
+                        .WithMany("CartId")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("record_backend.Models.Record", "Record")
                         .WithMany()
                         .HasForeignKey("RecordId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("record_backend.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("record_backend.Models.Order", b =>
-                {
-                    b.HasOne("record_backend.Models.Cart", "Carts")
-                        .WithMany()
-                        .HasForeignKey("CartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

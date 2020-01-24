@@ -1,4 +1,6 @@
 
+using System.Collections.Generic;
+
 namespace record_backend.Models
 {
   public class User {
@@ -6,6 +8,8 @@ namespace record_backend.Models
     public string FirstName {get; set;}
     public string LastName {get; set;}
     public string Email {get; set;}
+
+    public List<Order> Orders {get; set;}
 
   }
 }

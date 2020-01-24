@@ -35,6 +35,26 @@ namespace record_backend.Migrations
                     b.HasIndex("RecordId");
 
                     b.ToTable("Carts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            OrderId = 1,
+                            RecordId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            OrderId = 1,
+                            RecordId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            OrderId = 1,
+                            RecordId = 3
+                        });
                 });
 
             modelBuilder.Entity("record_backend.Models.Genre", b =>
@@ -97,7 +117,23 @@ namespace record_backend.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Orders");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UserId = 7
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UserId = 8
+                        });
                 });
 
             modelBuilder.Entity("record_backend.Models.ProductsInGenre", b =>
@@ -284,8 +320,8 @@ namespace record_backend.Migrations
 
             modelBuilder.Entity("record_backend.Models.Cart", b =>
                 {
-                    b.HasOne("record_backend.Models.Order", "Order")
-                        .WithMany("CartId")
+                    b.HasOne("record_backend.Models.Order", null)
+                        .WithMany("Cart")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -293,6 +329,15 @@ namespace record_backend.Migrations
                     b.HasOne("record_backend.Models.Record", "Record")
                         .WithMany()
                         .HasForeignKey("RecordId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("record_backend.Models.Order", b =>
+                {
+                    b.HasOne("record_backend.Models.User", null)
+                        .WithMany("Orders")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

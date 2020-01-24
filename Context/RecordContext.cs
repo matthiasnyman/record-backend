@@ -77,18 +77,11 @@ namespace EntityFrameworkUppgift.contexts
         Info = "brusse!",
 
       });
-      ModelBuilder.Entity<User>().HasData(new User{ 
-        Id = 7,
-        FirstName = "Matthias",
-        LastName = "Nyman",
-        Email = "att@att.se",
-      });
-      ModelBuilder.Entity<User>().HasData(new User{ 
-        Id = 8,
-        FirstName = "Kalle",
-        LastName = "Nyman",
-        Email = "Kalle@attd.se",
-      });
+
+
+
+
+
       ModelBuilder.Entity<Genre>().HasData(new Genre{ 
         Id = 1,
         Name = "Pop",
@@ -113,25 +106,80 @@ namespace EntityFrameworkUppgift.contexts
         Id = 6,
         Name = "Punk",
       });
+
+
+
+
       ModelBuilder.Entity<ProductsInGenre>().HasData(new ProductsInGenre{ 
+        Id = 1,
         RecordId = 1,
         GenreId = 2
       });
       ModelBuilder.Entity<ProductsInGenre>().HasData(new ProductsInGenre{ 
+        Id = 2,
         RecordId = 2,
         GenreId = 1
       });
       ModelBuilder.Entity<ProductsInGenre>().HasData(new ProductsInGenre{ 
+        Id = 3,
         RecordId = 3,
         GenreId = 1
       });
       ModelBuilder.Entity<ProductsInGenre>().HasData(new ProductsInGenre{ 
+        Id = 4,
         RecordId = 4,
         GenreId = 1
       });
       ModelBuilder.Entity<ProductsInGenre>().HasData(new ProductsInGenre{ 
+        Id = 5,
         RecordId = 4,
         GenreId = 3
+      });
+
+
+      ModelBuilder.Entity<Order>().HasData(new Order{ 
+        Id = 1,
+        UserId = 7
+
+      });
+      ModelBuilder.Entity<Order>().HasData(new Order{ 
+        Id = 2,
+        UserId = 8
+
+      });
+
+
+      ModelBuilder.Entity<Cart>().HasData(new Cart{ 
+        Id = 1,
+        OrderId = 1,
+        RecordId = 1,
+
+      });
+      ModelBuilder.Entity<Cart>().HasData(new Cart{ 
+        Id = 2,
+        OrderId = 1,
+        RecordId = 2,
+
+      });
+      ModelBuilder.Entity<Cart>().HasData(new Cart{ 
+        Id = 3,
+        OrderId = 1,
+        RecordId = 3,
+
+      });
+
+      
+      ModelBuilder.Entity<User>().HasData(new User{ 
+        Id = 7,
+        FirstName = "Matthias",
+        LastName = "Nyman",
+        Email = "att@att.se",
+      });
+      ModelBuilder.Entity<User>().HasData(new User{ 
+        Id = 8,
+        FirstName = "Kalle",
+        LastName = "Nyman",
+        Email = "Kalle@attd.se",
       });
 
 

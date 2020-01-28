@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
+// för att få ut alla album som finns i en genre 
+
 namespace record_backend.Models
 {
   public class ProductsInGenre {
@@ -9,7 +11,6 @@ namespace record_backend.Models
     public int RecordId {get; set;}
     [JsonIgnore]
     public Genre Genre {get; set;}
-    [JsonIgnore]
     public Record Record {get; set;}
   }
 }

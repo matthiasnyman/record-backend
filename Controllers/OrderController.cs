@@ -51,7 +51,6 @@ namespace record_backend.Controllers
       {
         Order o = new Order();
         o.Created = DateTime.Now;
-        o.Created = DateTime.Now;
         o.UserId = newOrder.UserId;
         context.Orders.Add(o);
         context.SaveChanges();

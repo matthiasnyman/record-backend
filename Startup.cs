@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,6 +31,9 @@ namespace record_backend
     public void ConfigureServices(IServiceCollection services)
     {
 
+      services.AddAutoMapper(typeof(Startup));
+      services.AddControllersWithViews();
+      
       services.AddCors(options =>
         {
           options.AddPolicy(MyAllowSpecificOrigins,

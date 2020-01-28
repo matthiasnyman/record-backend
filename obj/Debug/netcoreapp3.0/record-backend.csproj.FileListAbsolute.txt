@@ -60,3 +60,5 @@ C:\Users\matth\projekts\backend\kod\record-backend\obj\Debug\netcoreapp3.0\recor
 C:\Users\matth\projekts\backend\kod\record-backend\obj\Debug\netcoreapp3.0\record-backend.csproj.CopyComplete
 C:\Users\matth\projekts\backend\kod\record-backend\obj\Debug\netcoreapp3.0\record-backend.dll
 C:\Users\matth\projekts\backend\kod\record-backend\obj\Debug\netcoreapp3.0\record-backend.pdb
+C:\Users\matth\projekts\backend\kod\record-backend\bin\Debug\netcoreapp3.0\AutoMapper.dll
+C:\Users\matth\projekts\backend\kod\record-backend\bin\Debug\netcoreapp3.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

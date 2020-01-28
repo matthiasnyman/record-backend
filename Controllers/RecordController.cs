@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using EntityFrameworkUppgift.contexts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,43 +15,31 @@ namespace record_backend.Controllers
   [Route("[controller]")]
   public class RecordController : ControllerBase
   {
+    private readonly IMapper _mapper;
 
-    private readonly ILogger<RecordController> _logger;
-
-    public RecordController(ILogger<RecordController> logger)
+    public RecordController(IMapper mapper)
     {
-      _logger = logger;
+      _mapper = mapper;
     }
+    // private readonly ILogger<RecordController> _logger;
+
+    // public RecordController(ILogger<RecordController> logger)
+    // {
+    //   _logger = logger;
+    // }
 
     [HttpGet]
     public IEnumerable<RecordViewModel> Get()
     {
-      List<RecordViewModel> viewModels = new List<RecordViewModel>();
-
       using (RecordStoreContexts context = new RecordStoreContexts())
       {
-        List<Record> rs = context.Records.Include(record => record.ProductsInGenre).ToList();
-
-        foreach(var r in rs) {
-
-          RecordViewModel viewModel = new RecordViewModel();
-          viewModel.Record = r;
-
-          List<ProductsInGenre> pigs = context.ProductsInGenre
-            .Where(pig => pig.RecordId == r.Id)
-            .ToList();
-
-          List<Genre> genres = new List<Genre>();
-          foreach(var g in pigs){
-            Genre genre = context.Genres.FirstOrDefault(genre => genre.Id == g.GenreId);
-            genres.Add(genre);
-          }
-
-          viewModel.Genres = genres;
-
-          viewModels.Add(viewModel);
-        }
-
+        List<Record> records = context.Records
+          .Include(records => records.ProductsInGenre)
+          .ThenInclude(ProductsInGenre => ProductsInGenre.Genre)
+          .ToList();
+        
+        List<RecordViewModel> viewModels = _mapper.Map<List<RecordViewModel>>(records);
+        
         return viewModels;
       }
     }
@@ -70,6 +59,7 @@ namespace record_backend.Controllers
       using (RecordStoreContexts context = new RecordStoreContexts())
       {
         context.Records.Add(newRecord);
+        // context.ProductsInGenre.Add(newRecord);
         context.SaveChanges();
       }
       return Created("/Record", newRecord);

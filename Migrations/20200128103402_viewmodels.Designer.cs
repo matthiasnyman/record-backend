@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace record_backend.Migrations
 {
     [DbContext(typeof(RecordStoreContexts))]
-    [Migration("20200124101148_orders")]
-    partial class orders
+    [Migration("20200128103402_viewmodels")]
+    partial class viewmodels
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

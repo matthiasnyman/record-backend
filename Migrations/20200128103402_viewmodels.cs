@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace record_backend.Migrations
 {
-    public partial class orders : Migration
+    public partial class viewmodels : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

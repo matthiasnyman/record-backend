@@ -30,6 +30,7 @@ namespace record_backend.Controllers
         return context.Users
           .Include(user => user.Orders)
           .ThenInclude(order => order.Cart)
+          .ThenInclude(cart => cart.Record)
           .ToList();
       }
     }

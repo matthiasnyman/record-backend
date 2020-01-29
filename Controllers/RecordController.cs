@@ -21,12 +21,6 @@ namespace record_backend.Controllers
     {
       _mapper = mapper;
     }
-    // private readonly ILogger<RecordController> _logger;
-
-    // public RecordController(ILogger<RecordController> logger)
-    // {
-    //   _logger = logger;
-    // }
 
     [HttpGet]
     public IEnumerable<RecordViewModel> Get()
@@ -37,9 +31,9 @@ namespace record_backend.Controllers
           .Include(records => records.ProductsInGenre)
           .ThenInclude(ProductsInGenre => ProductsInGenre.Genre)
           .ToList();
-        
+
         List<RecordViewModel> viewModels = _mapper.Map<List<RecordViewModel>>(records);
-        
+
         return viewModels;
       }
     }
@@ -54,15 +48,24 @@ namespace record_backend.Controllers
     }
 
     [HttpPost]
-    public IActionResult Post([FromBody] Record newRecord)
+    public IActionResult Post([FromBody] RecordViewModel newRecord)
     {
+      Record record = _mapper.Map<Record>(newRecord);
+
+
+      foreach (ProductsInGenre ProductsInGenre in record.ProductsInGenre)
+      {
+        ProductsInGenre.Genre = null;
+      }
+      //funkar endas om 1 kategori skickas med
+      // record.ProductsInGenre.First().Genre = null;
+
       using (RecordStoreContexts context = new RecordStoreContexts())
       {
-        context.Records.Add(newRecord);
-        // context.ProductsInGenre.Add(newRecord);
+        context.Records.Add(record);
         context.SaveChanges();
       }
-      return Created("/Record", newRecord);
+      return Created("/Record", record);
     }
 
     [HttpDelete("{id}")]

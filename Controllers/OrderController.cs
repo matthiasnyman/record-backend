@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using EntityFrameworkUppgift.contexts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,12 +15,11 @@ namespace record_backend.Controllers
   [Route("[controller]")]
   public class OrderController : ControllerBase
   {
+    private readonly IMapper _mapper;
 
-    private readonly ILogger<OrderController> _logger;
-
-    public OrderController(ILogger<OrderController> logger)
+    public OrderController(IMapper mapper)
     {
-      _logger = logger;
+      _mapper = mapper;
     }
 
     [HttpGet]
@@ -31,7 +31,7 @@ namespace record_backend.Controllers
           .Include(order => order.Cart)
           .ThenInclude(cart => cart.Record)
           .ToList();
-  
+
       }
     }
 
@@ -45,17 +45,31 @@ namespace record_backend.Controllers
     }
 
     [HttpPost]
-    public IActionResult Post([FromBody] Order newOrder)
+    public IActionResult Post([FromBody] OrderViewModel newOrder)
     {
+
+      Order order = _mapper.Map<Order>(newOrder);
+
       using (RecordStoreContexts context = new RecordStoreContexts())
       {
         Order o = new Order();
         o.Created = DateTime.Now;
-        o.UserId = newOrder.UserId;
+        o.UserId = order.UserId;
         context.Orders.Add(o);
         context.SaveChanges();
+
+        foreach(Cart cart in order.Cart)
+        {
+          Cart c = new Cart();
+          c.RecordId = cart.RecordId;
+          c.OrderId = o.Id;
+          context.Carts.Add(c);
+
+          context.SaveChanges();
+        }
+
+        return Created("/Order", o);
       }
-      return Created("/Order", newOrder);
     }
 
     [HttpDelete("{id}")]

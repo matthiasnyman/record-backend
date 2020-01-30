@@ -57,8 +57,6 @@ namespace record_backend.Controllers
       {
         ProductsInGenre.Genre = null;
       }
-      //funkar endas om 1 kategori skickas med
-      // record.ProductsInGenre.First().Genre = null;
 
       using (RecordStoreContexts context = new RecordStoreContexts())
       {

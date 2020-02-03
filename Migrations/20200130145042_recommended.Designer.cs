@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace record_backend.Migrations
 {
     [DbContext(typeof(RecordStoreContexts))]
-    [Migration("20200128103402_viewmodels")]
-    partial class viewmodels
+    [Migration("20200130145042_recommended")]
+    partial class recommended
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -214,6 +214,9 @@ namespace record_backend.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18, 2)");
 
+                    b.Property<bool>("Recommended")
+                        .HasColumnType("INTEGER");
+
                     b.Property<decimal>("Sale")
                         .HasColumnType("TEXT");
 
@@ -230,6 +233,7 @@ namespace record_backend.Migrations
                             Image = "https://www.bengans.se/bilder/artiklar/liten/2572243_S.jpg",
                             Info = "Skivan är ok..",
                             Price = 120.00m,
+                            Recommended = false,
                             Sale = 0m
                         },
                         new
@@ -240,6 +244,7 @@ namespace record_backend.Migrations
                             Image = "https://www.bengans.se/bilder/artiklar/liten/1689651_S.jpg",
                             Info = "Skivan är fantastisk!",
                             Price = 200.00m,
+                            Recommended = true,
                             Sale = 0m
                         },
                         new
@@ -250,6 +255,7 @@ namespace record_backend.Migrations
                             Image = "https://www.bengans.se/bilder/artiklar/liten/619835_S.jpg",
                             Info = "Håkan bråkan!",
                             Price = 130.00m,
+                            Recommended = true,
                             Sale = 0m
                         },
                         new
@@ -260,6 +266,7 @@ namespace record_backend.Migrations
                             Image = "https://www.bengans.se/bilder/artiklar/liten/3601538_S.jpg",
                             Info = "Simon gillat!",
                             Price = 200.00m,
+                            Recommended = false,
                             Sale = 0m
                         },
                         new
@@ -270,6 +277,7 @@ namespace record_backend.Migrations
                             Image = "https://www.bengans.se/bilder/artiklar/liten/1533609_S.jpg",
                             Info = "brusse!",
                             Price = 20.00m,
+                            Recommended = true,
                             Sale = 0m
                         },
                         new
@@ -280,6 +288,7 @@ namespace record_backend.Migrations
                             Image = "https://www.bengans.se/bilder/artiklar/liten/3496044_S.jpg",
                             Info = "brusse!",
                             Price = 2000.00m,
+                            Recommended = true,
                             Sale = 0m
                         });
                 });

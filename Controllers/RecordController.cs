@@ -37,6 +37,24 @@ namespace record_backend.Controllers
         return viewModels;
       }
     }
+    [HttpGet]
+    [Route("/recommended")]
+
+    public IEnumerable<RecordViewModel> GetRecommended()
+    {
+      using (RecordStoreContexts context = new RecordStoreContexts())
+      {
+        List<Record> records = context.Records
+          .Where(records => records.Recommended == true)
+          // .Include(records => records.ProductsInGenre)
+          // .ThenInclude(ProductsInGenre => ProductsInGenre.Genre)
+          .ToList();
+
+        List<RecordViewModel> viewModels = _mapper.Map<List<RecordViewModel>>(records);
+
+        return viewModels;
+      }
+    }
 
     [HttpGet("{id}")]
     public ActionResult<Record> Get(int id)

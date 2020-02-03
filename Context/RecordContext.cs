@@ -27,6 +27,7 @@ namespace EntityFrameworkUppgift.contexts
         Price = 120.00m,
         Sale = 0,
         Info = "Skivan är ok..",
+        Recommended = false
       });
       ModelBuilder.Entity<Record>().HasData(new Record{ 
         Id = 2,
@@ -35,7 +36,8 @@ namespace EntityFrameworkUppgift.contexts
         Image = "https://www.bengans.se/bilder/artiklar/liten/1689651_S.jpg",
         Price = 200.00m,
         Sale = 0,
-        Info = "Skivan är fantastisk!"
+        Info = "Skivan är fantastisk!",
+        Recommended = true
       });
       ModelBuilder.Entity<Record>().HasData(new Record{ 
         Id = 3,
@@ -45,6 +47,7 @@ namespace EntityFrameworkUppgift.contexts
         Price = 130.00m,
         Sale = 0,
         Info = "Håkan bråkan!",
+        Recommended = true
 
       });
       ModelBuilder.Entity<Record>().HasData(new Record{ 
@@ -55,6 +58,7 @@ namespace EntityFrameworkUppgift.contexts
         Price = 200.00m,
         Sale = 0,
         Info = "Simon gillat!",
+        Recommended = false
 
       });
       ModelBuilder.Entity<Record>().HasData(new Record{ 
@@ -65,6 +69,7 @@ namespace EntityFrameworkUppgift.contexts
         Price = 20.00m,
         Sale = 0,
         Info = "brusse!",
+        Recommended = true
 
       });
       ModelBuilder.Entity<Record>().HasData(new Record{ 
@@ -75,11 +80,9 @@ namespace EntityFrameworkUppgift.contexts
         Price = 2000.00m,
         Sale = 0,
         Info = "brusse!",
+        Recommended = true
 
       });
-
-
-
 
 
       ModelBuilder.Entity<Genre>().HasData(new Genre{ 

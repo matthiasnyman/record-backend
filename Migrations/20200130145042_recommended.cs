@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace record_backend.Migrations
 {
-    public partial class viewmodels : Migration
+    public partial class recommended : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -31,6 +31,7 @@ namespace record_backend.Migrations
                     Image = table.Column<string>(nullable: true),
                     Price = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
                     Sale = table.Column<decimal>(nullable: false),
+                    Recommended = table.Column<bool>(nullable: false),
                     Info = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -157,33 +158,33 @@ namespace record_backend.Migrations
 
             migrationBuilder.InsertData(
                 table: "Records",
-                columns: new[] { "Id", "Album", "Artist", "Image", "Info", "Price", "Sale" },
-                values: new object[] { 1, "ABBA the album", "ABBA", "https://www.bengans.se/bilder/artiklar/liten/2572243_S.jpg", "Skivan är ok..", 120.00m, 0m });
+                columns: new[] { "Id", "Album", "Artist", "Image", "Info", "Price", "Recommended", "Sale" },
+                values: new object[] { 1, "ABBA the album", "ABBA", "https://www.bengans.se/bilder/artiklar/liten/2572243_S.jpg", "Skivan är ok..", 120.00m, false, 0m });
 
             migrationBuilder.InsertData(
                 table: "Records",
-                columns: new[] { "Id", "Album", "Artist", "Image", "Info", "Price", "Sale" },
-                values: new object[] { 2, "Röd", "Kent", "https://www.bengans.se/bilder/artiklar/liten/1689651_S.jpg", "Skivan är fantastisk!", 200.00m, 0m });
+                columns: new[] { "Id", "Album", "Artist", "Image", "Info", "Price", "Recommended", "Sale" },
+                values: new object[] { 2, "Röd", "Kent", "https://www.bengans.se/bilder/artiklar/liten/1689651_S.jpg", "Skivan är fantastisk!", 200.00m, true, 0m });
 
             migrationBuilder.InsertData(
                 table: "Records",
-                columns: new[] { "Id", "Album", "Artist", "Image", "Info", "Price", "Sale" },
-                values: new object[] { 3, "2 steg från paridise", "Håkan Hellström", "https://www.bengans.se/bilder/artiklar/liten/619835_S.jpg", "Håkan bråkan!", 130.00m, 0m });
+                columns: new[] { "Id", "Album", "Artist", "Image", "Info", "Price", "Recommended", "Sale" },
+                values: new object[] { 3, "2 steg från paridise", "Håkan Hellström", "https://www.bengans.se/bilder/artiklar/liten/619835_S.jpg", "Håkan bråkan!", 130.00m, true, 0m });
 
             migrationBuilder.InsertData(
                 table: "Records",
-                columns: new[] { "Id", "Album", "Artist", "Image", "Info", "Price", "Sale" },
-                values: new object[] { 4, "Boston vol:2", "Fleetwood mac", "https://www.bengans.se/bilder/artiklar/liten/3601538_S.jpg", "Simon gillat!", 200.00m, 0m });
+                columns: new[] { "Id", "Album", "Artist", "Image", "Info", "Price", "Recommended", "Sale" },
+                values: new object[] { 4, "Boston vol:2", "Fleetwood mac", "https://www.bengans.se/bilder/artiklar/liten/3601538_S.jpg", "Simon gillat!", 200.00m, false, 0m });
 
             migrationBuilder.InsertData(
                 table: "Records",
-                columns: new[] { "Id", "Album", "Artist", "Image", "Info", "Price", "Sale" },
-                values: new object[] { 5, "Bourn in the USA", "Bruse Springstin", "https://www.bengans.se/bilder/artiklar/liten/1533609_S.jpg", "brusse!", 20.00m, 0m });
+                columns: new[] { "Id", "Album", "Artist", "Image", "Info", "Price", "Recommended", "Sale" },
+                values: new object[] { 5, "Bourn in the USA", "Bruse Springstin", "https://www.bengans.se/bilder/artiklar/liten/1533609_S.jpg", "brusse!", 20.00m, true, 0m });
 
             migrationBuilder.InsertData(
                 table: "Records",
-                columns: new[] { "Id", "Album", "Artist", "Image", "Info", "Price", "Sale" },
-                values: new object[] { 6, "Hot in the shade", "Kiss", "https://www.bengans.se/bilder/artiklar/liten/3496044_S.jpg", "brusse!", 2000.00m, 0m });
+                columns: new[] { "Id", "Album", "Artist", "Image", "Info", "Price", "Recommended", "Sale" },
+                values: new object[] { 6, "Hot in the shade", "Kiss", "https://www.bengans.se/bilder/artiklar/liten/3496044_S.jpg", "brusse!", 2000.00m, true, 0m });
 
             migrationBuilder.InsertData(
                 table: "Users",

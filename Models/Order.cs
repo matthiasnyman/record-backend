@@ -10,5 +10,7 @@ namespace record_backend.Models
     public List<Cart> Cart {get; set;}
     public int UserId {get; set;}
 
+    //public User User {get;set;}
+
   }
 }

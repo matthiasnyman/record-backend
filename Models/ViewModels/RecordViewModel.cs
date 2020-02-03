@@ -17,6 +17,7 @@ namespace record_backend.Models
     public decimal Price {get; set;}
     public decimal Sale {get; set;}
     public string Info {get; set;}
+    public bool Recommended {get; set;}
   }
 }
 

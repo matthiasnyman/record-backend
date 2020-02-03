@@ -16,6 +16,7 @@ namespace record_backend.Models
     [Column(TypeName = "decimal(18, 2)")]
     public decimal Price {get; set;}
     public decimal Sale {get; set;}
+    public bool Recommended {get;set;}
     public string Info {get; set;}
     
     [JsonIgnore]

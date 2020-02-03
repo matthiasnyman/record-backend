@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace record_backend.Migrations
 {
     [DbContext(typeof(RecordStoreContexts))]
-    [Migration("20200130145042_recommended")]
-    partial class recommended
+    [Migration("20200203121041_sale")]
+    partial class sale
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -234,7 +234,7 @@ namespace record_backend.Migrations
                             Info = "Skivan är ok..",
                             Price = 120.00m,
                             Recommended = false,
-                            Sale = 0m
+                            Sale = 0.1m
                         },
                         new
                         {

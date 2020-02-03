@@ -232,7 +232,7 @@ namespace record_backend.Migrations
                             Info = "Skivan är ok..",
                             Price = 120.00m,
                             Recommended = false,
-                            Sale = 0m
+                            Sale = 0.1m
                         },
                         new
                         {

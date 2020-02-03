@@ -25,7 +25,7 @@ namespace EntityFrameworkUppgift.contexts
         Album = "ABBA the album",
         Image = "https://www.bengans.se/bilder/artiklar/liten/2572243_S.jpg",
         Price = 120.00m,
-        Sale = 0,
+        Sale = 0.1m,
         Info = "Skivan är ok..",
         Recommended = false
       });

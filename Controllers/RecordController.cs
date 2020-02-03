@@ -55,6 +55,24 @@ namespace record_backend.Controllers
         return viewModels;
       }
     }
+    [HttpGet]
+    [Route("/sale")]
+
+    public IEnumerable<RecordViewModel> GetSale()
+    {
+      using (RecordStoreContexts context = new RecordStoreContexts())
+      {
+        List<Record> records = context.Records
+          .Where(records => records.Sale != 0)
+          // .Include(records => records.ProductsInGenre)
+          // .ThenInclude(ProductsInGenre => ProductsInGenre.Genre)
+          .ToList();
+
+        List<RecordViewModel> viewModels = _mapper.Map<List<RecordViewModel>>(records);
+
+        return viewModels;
+      }
+    }
 
     [HttpGet("{id}")]
     public ActionResult<Record> Get(int id)

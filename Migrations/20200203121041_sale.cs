@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace record_backend.Migrations
 {
-    public partial class recommended : Migration
+    public partial class sale : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -159,7 +159,7 @@ namespace record_backend.Migrations
             migrationBuilder.InsertData(
                 table: "Records",
                 columns: new[] { "Id", "Album", "Artist", "Image", "Info", "Price", "Recommended", "Sale" },
-                values: new object[] { 1, "ABBA the album", "ABBA", "https://www.bengans.se/bilder/artiklar/liten/2572243_S.jpg", "Skivan är ok..", 120.00m, false, 0m });
+                values: new object[] { 1, "ABBA the album", "ABBA", "https://www.bengans.se/bilder/artiklar/liten/2572243_S.jpg", "Skivan är ok..", 120.00m, false, 0.1m });
 
             migrationBuilder.InsertData(
                 table: "Records",

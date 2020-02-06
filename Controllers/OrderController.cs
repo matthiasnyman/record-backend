@@ -52,13 +52,31 @@ namespace record_backend.Controllers
 
       using (RecordStoreContexts context = new RecordStoreContexts())
       {
+
+        User userExists = context.Users.FirstOrDefault(User => User.Email == newOrder.Email);
+
+        int userId = 0;
+        if(userExists == null){
+          User u = new User();
+          u.FirstName  = newOrder.FirstName;
+          u.LastName  = newOrder.LastName;
+          u.Email  = newOrder.Email;
+          context.Users.Add(u);
+          context.SaveChanges();
+          userId = u.Id;
+        }
+        else {
+          userId = userExists.Id;
+        }
+      
+
         Order o = new Order();
         o.Created = DateTime.Now;
-        o.UserId = order.UserId;
+        o.UserId = userId;
         context.Orders.Add(o);
         context.SaveChanges();
 
-        foreach(Cart cart in order.Cart)
+        foreach (Cart cart in order.Cart)
         {
           Cart c = new Cart();
           c.RecordId = cart.RecordId;

@@ -142,12 +142,12 @@ namespace EntityFrameworkUppgift.contexts
 
       ModelBuilder.Entity<Order>().HasData(new Order{ 
         Id = 1,
-        UserId = 7
+        UserId = 1
 
       });
       ModelBuilder.Entity<Order>().HasData(new Order{ 
         Id = 2,
-        UserId = 8
+        UserId = 2
 
       });
 
@@ -173,13 +173,13 @@ namespace EntityFrameworkUppgift.contexts
 
       
       ModelBuilder.Entity<User>().HasData(new User{ 
-        Id = 7,
+        Id = 1,
         FirstName = "Matthias",
         LastName = "Nyman",
         Email = "att@att.se",
       });
       ModelBuilder.Entity<User>().HasData(new User{ 
-        Id = 8,
+        Id = 2,
         FirstName = "Kalle",
         LastName = "Nyman",
         Email = "Kalle@attd.se",

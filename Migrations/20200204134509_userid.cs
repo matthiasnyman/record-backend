@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace record_backend.Migrations
 {
-    public partial class sale : Migration
+    public partial class userid : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -189,22 +189,22 @@ namespace record_backend.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Email", "FirstName", "LastName" },
-                values: new object[] { 7, "att@att.se", "Matthias", "Nyman" });
+                values: new object[] { 1, "att@att.se", "Matthias", "Nyman" });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Email", "FirstName", "LastName" },
-                values: new object[] { 8, "Kalle@attd.se", "Kalle", "Nyman" });
+                values: new object[] { 2, "Kalle@attd.se", "Kalle", "Nyman" });
 
             migrationBuilder.InsertData(
                 table: "Orders",
                 columns: new[] { "Id", "Created", "UserId" },
-                values: new object[] { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 7 });
+                values: new object[] { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1 });
 
             migrationBuilder.InsertData(
                 table: "Orders",
                 columns: new[] { "Id", "Created", "UserId" },
-                values: new object[] { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 8 });
+                values: new object[] { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 2 });
 
             migrationBuilder.InsertData(
                 table: "ProductsInGenre",

@@ -126,13 +126,13 @@ namespace record_backend.Migrations
                         {
                             Id = 1,
                             Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserId = 7
+                            UserId = 1
                         },
                         new
                         {
                             Id = 2,
                             Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserId = 8
+                            UserId = 2
                         });
                 });
 
@@ -313,14 +313,14 @@ namespace record_backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 7,
+                            Id = 1,
                             Email = "att@att.se",
                             FirstName = "Matthias",
                             LastName = "Nyman"
                         },
                         new
                         {
-                            Id = 8,
+                            Id = 2,
                             Email = "Kalle@attd.se",
                             FirstName = "Kalle",
                             LastName = "Nyman"
@@ -344,7 +344,7 @@ namespace record_backend.Migrations
 
             modelBuilder.Entity("record_backend.Models.Order", b =>
                 {
-                    b.HasOne("record_backend.Models.User", null)
+                    b.HasOne("record_backend.Models.User", "User")
                         .WithMany("Orders")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
